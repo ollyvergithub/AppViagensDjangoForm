@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap %}
 
 {% block content %}
 <h1>App de Passagens- DjangoForms</h1>
 <section class="col-8">
     <form action="{% url 'minha_consulta' %}" method="POST">
         {% csrf_token %}
+
+        {{ form|bootstrap }}
         
-        {% for field in form.visible_fields %}
-            <div class="form-group">
-                <label for="{{field.id_for_label}}">{{field.label}}</label>
-                {{ field }}
-            </div>
-        {% endfor %}
+{#        {% for field in form.visible_fields %}#}
+{#            <div class="form-group">#}
+{#                <label for="{{field.id_for_label}}">{{field.label}}</label>#}
+{#                {{ field }}#}
+{#            </div>#}
+{#        {% endfor %}#}
         <input type="submit" class="btn btn-success" value="OK">
     </form>
 </section>
