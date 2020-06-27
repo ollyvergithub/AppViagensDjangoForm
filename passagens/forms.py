@@ -19,4 +19,11 @@ class PassagemForms(forms.Form):
         required=False
     )
 
+    def clean_origem(self):
+        origem = self.cleaned_data.get('origem')
+        if any(char.isdigit() for char in origem):
+            raise forms.ValidationError("Origem inválida: não é permitido números")
+        else:
+            return origem
+
 
