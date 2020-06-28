@@ -32,7 +32,7 @@ class PassagemForms(forms.ModelForm):
         campo_tem_algum_numero(destino, 'destino', lista_de_erros)
         origem_destino_iguais(origem, destino, lista_de_erros)
         data_ida_maior_que_data_volta(data_ida, data_volta, lista_de_erros)
-        # data_ida_menor_que_hoje(data_ida, data_pesquisa, lista_de_erros)
+        data_ida_menor_que_hoje(data_ida, data_pesquisa, lista_de_erros)
 
         if lista_de_erros is not None:
             for erro in lista_de_erros:
@@ -40,6 +40,12 @@ class PassagemForms(forms.ModelForm):
                 self.add_error(erro, mensagem_erro)
 
         return self.cleaned_data
+
+
+class PessoaForms(forms.ModelForm):
+    class Meta:
+        model = Pessoa
+        exclude = ['nome']
 
 
 
